@@ -32,7 +32,7 @@ async function main() {
         let subscriptionId = secrets.getSecret("$.subscriptionId", false);
         const enableAzPSSession = core.getInput('enable-AzPSSession').toLowerCase() === "true";
         if (!servicePrincipalId || !servicePrincipalKey || !tenantId) {
-            throw new Error("Not all values are present in the creds object. Ensure clientId, clientSecret, tenantId and subscriptionId are supplied.");
+            throw new Error("Not all values are present in the creds object. Ensure clientId, clientSecret, tenantId are supplied.");
         }
         // Attempting Az cli login
         if (!subscriptionId) {
