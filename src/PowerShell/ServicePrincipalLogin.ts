@@ -13,12 +13,18 @@ export class ServicePrincipalLogin implements IAzurePowerShellSession {
     servicePrincipalKey: string;
     tenantId: string;
     subscriptionId: string;
+    allowNoSubscriptionsLogin: boolean;
 
-    constructor(servicePrincipalId: string, servicePrincipalKey: string, tenantId: string, subscriptionId: string) {
+    constructor(servicePrincipalId: string, 
+                servicePrincipalKey: string, 
+                tenantId: string, 
+                subscriptionId: string,
+                allowNoSubscriptionsLogin: boolean) {
         this.servicePrincipalId = servicePrincipalId;
         this.servicePrincipalKey = servicePrincipalKey;
         this.tenantId = tenantId;
         this.subscriptionId = subscriptionId;
+        this.allowNoSubscriptionsLogin = allowNoSubscriptionsLogin;
     }
 
     async initialize() {
@@ -41,6 +47,7 @@ export class ServicePrincipalLogin implements IAzurePowerShellSession {
             servicePrincipalId: this.servicePrincipalId,
             servicePrincipalKey: this.servicePrincipalKey,
             subscriptionId: this.subscriptionId,
+            allowNoSubscriptionsLogin: this.allowNoSubscriptionsLogin,
             environment: ServicePrincipalLogin.environment,
             scopeLevel: ServicePrincipalLogin.scopeLevel
         }
